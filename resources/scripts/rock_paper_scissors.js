@@ -14,9 +14,10 @@ class RockPaperScissors {
    */
   generateCPUResponse(){
     const acceptedValues = [ `rock`, `paper`, `scissors` ];
-
-    return ;
+    
+    return Math.floor(Math.random() * 3);
   }
+
   /**
    * returns one of the following values: `win`, `lose`, `tie`
    * tie:
@@ -32,8 +33,39 @@ class RockPaperScissors {
    * @param {string} userSelection user selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    * @param {string} cpuSelection computer selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    */
-  determineWinner(userSelection, cpuSelection){
-
+  determineWinner(userSelection, cpuSelection)
+  {
+    if (userSelection == cpuSelection)
+    {
+      return "tie"
+    }
+    else if (userSelection == 'rock')
+    {
+      if (cpuSelection == 'scissors'){
+        return "wins"
+      }
+      else {
+        return "lose"
+      }
+    }
+    else if (userSelection == 'paper')
+    {
+      if (cpuSelection == 'rock'){
+        return "wins"
+      }
+      else {
+        return "lose"
+      }
+    }
+    else 
+    {
+      if (cpuSelection == 'paper'){
+        return "wins"
+      }
+      else {
+        return "lose"
+      }
+    }
   }
 
   /**
@@ -41,7 +73,21 @@ class RockPaperScissors {
    * @param {string} userSelection user selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    */
   play(userSelection){
-
+    let cpuSelection = this.generateCPUResponse();
+    if(this.determineWinner(userSelection, cpuSelection) == 'win')
+    {
+      this.score.user++;
+      this.gameHistoryLog.push(this.username.user + " selected " + userSelection + ", CPU selected " + cpuSelection + ": " + this.username.user + "wins.")
+    }
+    else if(this.determineWinner(userSelection, cpuSelection) == 'lose')
+    {
+      this.score.cpu++;
+      this.gameHistoryLog.push(this.username.user + " selected " + userSelection + ", CPU selected " + cpuSelection + ": CPU wins.")
+    }
+    else 
+    {
+      this.gameHistoryLog.push(this.username.user + " selected " + userSelection + ", CPU selected " + cpuSelection + ": There was a Tie.")
+    }
   }
 
 }
