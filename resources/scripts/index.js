@@ -16,17 +16,20 @@ gameScreen.classList.add('d-none');
 
 // updateScoreTallyUI
 function updateScoreTallyUI(){
-  scoreParagraph.innerHTML(game.username.user + ': ' + game.score.user + 'v CPU: ' + game.score.cpu);
+  scoreParagraph.innerText = game.username + ': ' + game.score.user + ' v CPU: ' + game.score.cpu;
 }
 
 // updateGameHistoryUI
 function updateGameHistoryUI(){
-  gameHistoryParagraph.innerHTML(game.gameHistoryLog);
+  gameHistoryParagraph.innerText = '';
+  for(i=0; i < game.gameHistoryLog.length; i++){
+    gameHistoryParagraph.innerText += game.gameHistoryLog[i] + '\n';
+  }
 }
 
 // start-game-button EventListener
 startGameButton.addEventListener('click', function () {
-  const userName = userName.value
+  const username = userName.value
   game = new RockPaperScissors(username);
   welcomeScreen.classList.add('d-none');
   gameScreen.classList.remove('d-none');
@@ -35,10 +38,10 @@ startGameButton.addEventListener('click', function () {
 
 // go-button EventListener
 goButton.addEventListener('click', function () {
-  let userSelection = this.userSelection.value();
-  game.play(userSelection);
-  this.updateScoreTallyUI();
-  this.updateGameHistoryUI();
+  //let userSelection = this.userSelection.value();
+  game.play(userSelection.value);
+  updateScoreTallyUI();
+  updateGameHistoryUI();
 });
 
 // If you're doing the extra-credit, uncomment the below: reset-game-button

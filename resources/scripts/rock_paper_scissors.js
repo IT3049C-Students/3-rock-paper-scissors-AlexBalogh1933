@@ -35,7 +35,7 @@ class RockPaperScissors {
    */
   determineWinner(userSelection, cpuSelection)
   {
-    if (userSelection == cpuSelection)
+    if (userSelection.toLowerCase() == cpuSelection.toLowerCase())
     {
       return "tie"
     }
@@ -77,16 +77,16 @@ class RockPaperScissors {
     if(this.determineWinner(userSelection, cpuSelection) == 'win')
     {
       this.score.user++;
-      this.gameHistoryLog.push(this.username.user + " selected " + userSelection + ", CPU selected " + cpuSelection + ": " + this.username.user + "wins.")
+      this.gameHistoryLog.push(this.username + " selected " + userSelection + ", CPU selected " + cpuSelection + ": " + this.username + " wins.")
     }
     else if(this.determineWinner(userSelection, cpuSelection) == 'lose')
     {
       this.score.cpu++;
-      this.gameHistoryLog.push(this.username.user + " selected " + userSelection + ", CPU selected " + cpuSelection + ": CPU wins.")
+      this.gameHistoryLog.push(this.username + " selected " + userSelection + ", CPU selected " + cpuSelection + ": CPU wins.")
     }
     else 
     {
-      this.gameHistoryLog.push(this.username.user + " selected " + userSelection + ", CPU selected " + cpuSelection + ": There was a Tie.")
+      this.gameHistoryLog.push(this.username + " selected " + userSelection + ", CPU selected " + cpuSelection + ": There was a Tie.")
     }
   }
 
