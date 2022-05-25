@@ -13,9 +13,9 @@ class RockPaperScissors {
    * using Math.random() method, you should be able to get one of the following values
    */
   generateCPUResponse(){
-    const acceptedValues = [ `rock`, `paper`, `scissors` ];
-    
-    return Math.floor(Math.random() * 3);
+    const acceptedValues = [ 'rock', 'paper', 'scissors' ];
+    let value = Math.floor(Math.random() * 3);
+    return acceptedValues[value];
   }
 
   /**
@@ -42,7 +42,7 @@ class RockPaperScissors {
     else if (userSelection == 'rock')
     {
       if (cpuSelection == 'scissors'){
-        return "wins"
+        return "win"
       }
       else {
         return "lose"
@@ -51,7 +51,7 @@ class RockPaperScissors {
     else if (userSelection == 'paper')
     {
       if (cpuSelection == 'rock'){
-        return "wins"
+        return "win"
       }
       else {
         return "lose"
@@ -60,7 +60,7 @@ class RockPaperScissors {
     else 
     {
       if (cpuSelection == 'paper'){
-        return "wins"
+        return "win"
       }
       else {
         return "lose"
